@@ -18,6 +18,7 @@ class Author
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"quote.read"})
      */
     private $id;
 
@@ -25,7 +26,7 @@ class Author
      * @var string the body of the review.
      *
      * @ORM\Column(type="string")
-     * @Groups({"book"})
+     * @Groups({"quote.read"})
      */
     public $name;
 
