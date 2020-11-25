@@ -26,7 +26,7 @@ class Quote
 
     /**
      * @var string The content of this quote.
-     * @Groups({"quote.read"})
+     * @Groups({"quote.read", "category.read"})
      * @ORM\Column(type="text")
      */
     public $content;
@@ -34,7 +34,7 @@ class Quote
     /**
      * @var Author The book this review is quote.
      *
-     * @Groups({"quote.read"})
+     * @Groups({"quote.read", "category.read"})
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="quotes")
      */
     public $author;

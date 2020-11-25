@@ -2,13 +2,14 @@
 // api/src/Entity/Author.php
 
 namespace App\Entity;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * A review of a book.
  *
  * @ORM\Entity
+ * @ApiResource(normalizationContext={"groups"={"author.read"}, "skip_null_values" = false,})
  */
 class Author
 {
@@ -26,7 +27,7 @@ class Author
      * @var string the body of the review.
      *
      * @ORM\Column(type="string")
-     * @Groups({"quote.read"})
+     * @Groups({"quote.read", "category.read"})
      */
     public $name;
 

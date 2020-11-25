@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * A category.
  *
  * @ORM\Entity
- * @ApiResource
+ * @ApiResource(normalizationContext={"groups"={"category.read"}, "skip_null_values" = false,})
  */
 class Category
 {
@@ -21,7 +21,7 @@ class Category
      *
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @Groups({"quote.read"})
+     * @Groups({"quote.read", "category.read"})
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -30,7 +30,7 @@ class Category
      * @var string the body of the review.
      *
      * @ORM\Column(type="string")
-     * @Groups({"quote.read"})
+     * @Groups({"quote.read", "category.read"})
      */
     public $name;
     
@@ -38,7 +38,7 @@ class Category
      * @var Quote[] Available reviews for this book.
      *
      * @ORM\ManyToMany(targetEntity="Quote", inversedBy="categories")
-     * @Groups({"category", "book"})
+     * @Groups({"category.read"})
      * @ORM\JoinTable(name="category_quote")
      */
     public $quotes;
